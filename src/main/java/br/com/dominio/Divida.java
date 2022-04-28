@@ -1,9 +1,8 @@
 package br.com.dominio;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
 
 @Data
 @Builder
@@ -11,14 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Divida {
   private double total;
-  private double valorPago;
   private String credor;
-  private String cnpjCredor;
+  @Setter(AccessLevel.NONE)
+  private Cnpj cnpjCredor = new Cnpj();
+  private Pagamentos pagamentos = new Pagamentos();
 
-  public void paga(double valor) {
-    if (valor > 100) {
-      valor = valor - 8;
-    }
-    this.valorPago += valor;
-  }
 }
